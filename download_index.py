@@ -2,6 +2,7 @@
 import requests
 import os
 
+# Получаем ссылки из переменных окружения
 INDEX_URL = os.getenv("INDEX_URL")
 DOCS_URL = os.getenv("DOCS_URL")
 
