@@ -2,8 +2,8 @@
 import requests
 import os
 
-INDEX_URL = os.getenv("https://drive.google.com/file/d/18q-rvIVqJnbybTkkcgi9psb195iP0UU3/view?usp=sharing")
-DOCS_URL = os.getenv("https://drive.google.com/file/d/1K8yQKhcdZl_Qx25ObpsoqIVhWk0FNDf3/view?usp=sharing")
+INDEX_URL = os.getenv("https://drive.google.com/uc?export=download&id=18q-rvIVqJnbybTkkcgi9psb195iP0UU3")
+DOCS_URL = os.getenv("https://drive.google.com/uc?export=download&id=1K8yQKhcdZl_Qx25ObpsoqIVhWk0FNDf3")
 
 def download(url, filename):
     print(f"⬇️ Скачиваем {filename}...")
