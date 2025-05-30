@@ -28,18 +28,19 @@ with open(DOCS_PATH, "r", encoding="utf-8") as f:
 index = faiss.read_index(str(INDEX_PATH))
 
 def search_docs(query, top_k=10):
+    # Пытаемся найти код в запросе
     match = re.search(r'\b(\d{4,10})\b', query.replace(" ", ""))
     if match:
         prefix = match.group(1)
-        results = [doc for doc in documents if doc["code"].replace(" ", "").startswith(prefix)]
-        if results:
-            return results
+        exact_matches = [doc for doc in documents if doc["code"].replace(" ", "").startswith(prefix)]
+        if exact_matches:
+            return exact_matches
 
+    # Если точных совпадений нет — делаем векторный поиск
     vector = get_embedding(query)
     vector = np.array(vector).astype("float32").reshape(1, -1)
     scores, indices = index.search(vector, top_k)
-    results = [documents[i] for i in indices[0]]
-    return results
+    return [documents[i] for i in indices[0]]
 
 @app.get("/search")
 def search(query: str = Query(..., description="Текст запроса")):
