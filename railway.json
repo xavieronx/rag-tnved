@@ -1,0 +1,9 @@
+{
+  "build": {
+    "env": {
+      "OPENAI_API_KEY": "sk-...",
+      "INDEX_URL": "https://example.com/tnved_combined.index",
+      "DOCS_URL": "https://example.com/tnved_combined_docs.json"
+    }
+  }
+}
